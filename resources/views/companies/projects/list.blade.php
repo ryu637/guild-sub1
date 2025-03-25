@@ -19,10 +19,10 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    .card:hover {
+    /* .card:hover {
         transform: translateY(-5px);
         box-shadow: 10px 10px 20px rgba(13, 2, 27, 0.8);
-    }
+    } */
 
     .card-header, .card-body {
         color: #F4EEE0;
