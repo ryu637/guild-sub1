@@ -3,13 +3,30 @@
 @section('title', 'Admin: Freelancer')
 
 @section('page-content')
-<div class="container">
-    <div class="ms-5">
-        <div class="col-12 card border-secondary align-items-center pt-4">
-            <div class="card-body">
+<div class="container ms-5">
+    <div class="card border-secondary mb-4">
+        <div class="card-header custom-light-gray">
+            <h2 class="h4 m-0">Freelancers List</h2>
+        </div>
+        <div class="card-body">
+
+            <!-- 検索フォーム -->
+            <div class="mb-2">
+                <h5 class="m-0">🔎 Search Freelancers</h5>
+            </div>
+            <form method="GET" action="{{ route('admin.freelancer') }}" class="row mb-4 g-3">
+                <div class="col-md-6">
+                    <input type="text" name="freelancer_name" class="form-control border-dark" placeholder="Search by Freelancer Name" value="{{ request('freelancer_name') }}">
+                </div>
+                <div class="col-md-6 d-flex">
+                    <button type="submit" class="btn btn-secondary me-2">Search</button>
+                    <a href="{{ route('admin.freelancer') }}" class="btn btn-outline-secondary">Reset</a>
+                </div>
+            </form>
+
             @foreach ($all_freelancers as $freelancer)
-            <div class="col-12 card m-2">
-                <table class="table table-borderless align-middle text-secondary my-2">
+            <div class="col-12 card my-3 shadow-sm">
+                <table class="table table-sm table-borderless align-middle text-secondary my-2">
                     <tr>
                         <td></td>
                         <td rowspan="4" class="mx-5">
@@ -19,8 +36,8 @@
                             <i class="fa-solid fa-circle-user icon-lg"></i>
                         @endif
                         </td>
-                        <td style="width: 100px;">Freelancer Name:</td>
-                        <td style="width: 200px;">
+                        <td style="width: 25%;">Freelancer Name:</td>
+                        <td style="width: 35%;">
                             @if ($freelancer->trashed())
                                 {{ $freelancer->user->username }}
                             @else
@@ -53,7 +70,7 @@
                                     @endif                                    
                                 </div>
                             </div>
-                            {{-- Include the modal here --}} 
+                            {{-- Include modal --}}
                             @include('admins.modal.freelancer') 
                         </td>
                     </tr>
@@ -85,12 +102,10 @@
             </div>
             @endforeach
         </div>
-        
-        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+        {{ $all_freelancers->links('pagination::bootstrap-4') }}
     </div>
 </div>
-<div class="d-flex justify-content-center mt-3">
-    {{ $all_freelancers->links('pagination::bootstrap-4') }}
-</div>
-
 @endsection

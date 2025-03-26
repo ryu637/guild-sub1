@@ -31,7 +31,7 @@ class CompanyProfileRequest extends FormRequest
             'employee'          => 'nullable|integer',
             'capital'           => 'nullable|numeric',
             'annualsales'       => 'nullable|numeric',
-            'description'       => 'nullable|string|max:255',
+            'description'       => 'nullable|string',
             'avatar'            => 'mimes:jpeg,jpg,png,gif|max:1048'
         ];
     }

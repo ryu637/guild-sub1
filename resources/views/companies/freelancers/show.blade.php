@@ -14,21 +14,13 @@
             @if ($user->avatar)
                 <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
             @else
-                <i class="fa-solid fa-user-circle fa-8x"></i>
+                <i class="fa-solid fa-user-circle profile-icon"></i>
             @endif
             <div class="rank">
                 <span class="stars">
-                    @if ($user->freelancer->rank === 1)
-                        ⭐️
-                    @elseif($user->freelancer->rank === 2)
-                        ⭐️⭐️
-                    @elseif($user->freelancer->rank === 3)
-                        ⭐️⭐️⭐️
-                    @elseif($user->freelancer->rank === 4)
-                        ⭐️⭐️⭐️⭐️
-                    @elseif($user->freelancer->rank === 5)
-                        ⭐️⭐️⭐️⭐️⭐️
-                    @endif
+                    @for($i = 1; $i <= $user->freelancer->rank; $i++)
+                        <i class="fa-solid fa-star"></i>
+                    @endfor
                 </span>
             </div>
         </div>
@@ -72,12 +64,10 @@
                             <th>Facebook</th>
                             <td>{{$user->freelancer->facebook}}</td>
                         </tr>
-                        @if (Auth::user()->id == $user->id)
-                            <tr>
-                                <th>Total Earnings</th>
-                                <td>{{$user->freelancer->total_earnings}}</td>
-                            </tr>
-                        @endif
+                        <tr>
+                            <th>Completed projects</th>
+                            <td>{{count($user->transactions)}}</td>
+                        </tr>
                     </table>
                 </div>
 

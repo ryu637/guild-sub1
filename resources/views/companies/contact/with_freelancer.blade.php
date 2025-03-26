@@ -70,11 +70,7 @@
     <div class="sidebar">
         @foreach ($all_users as $user_all)
             <div class="mt-2 d-flex align-items-start border-bottom border-black">
-
                 <a href="{{ route('company.freelancer.profile.show', $user_all->id)}}" class="text-black"><i class="fa-solid fa-circle-user fa-3x"></i></a>
-
-
-
                 <a href="{{ route('company.contact.with_freelancer', $user_all->id )}}" class="mt-2 fs-5 ms-2">{{ $user_all->name }}</a>
             </div>
         @endforeach

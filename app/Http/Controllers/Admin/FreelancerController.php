@@ -15,16 +15,19 @@ class FreelancerController extends Controller
         $this->freelancer = $freelancer_model;
     }
     
-    public function getAllFreelancers(){
-        $all_freelancers = $this->freelancer
-        ->with(['user' => function ($query){
-            $query->withTrashed();
-        }])
-        ->with(['skills'])
-        ->withTrashed()->orderBy('id', 'asc')->paginate(4);
+    public function getAllFreelancers(Request $request)
+    {
+        $query = Freelancer::with(['user'])->withTrashed();
 
-        return view('admins.freelancer')
-                ->with('all_freelancers', $all_freelancers);
+        if ($request->filled('freelancer_name')) {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('username', 'LIKE', '%' . $request->freelancer_name . '%');
+            });
+        }
+
+        $all_freelancers = $query->orderBy('id', 'asc')->paginate(4);
+
+        return view('admins.freelancer', compact('all_freelancers'));
     }
 
     public function showFreelancer($id){

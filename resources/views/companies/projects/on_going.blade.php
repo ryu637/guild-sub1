@@ -189,9 +189,7 @@ a {
                                     <a href="{{ route('company.project.status.submittedDecline', ['id' => $project_progress])}}" class="btn btn-sm btn-outline-danger">Decline</a>
 
                                     @if ($project_progress->application->submission_path)
-
                                         <a href="{{ route('company.project.download.file', $project_progress->application->id) }}" class=""><i class="fa-solid fa-download fa-2x text-white"></i></a>
-
                                     @endif
 
                                 @endif
@@ -207,3 +205,28 @@ a {
 <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 
 @endsection
+
+
+
+
+{{-- @for ($i = 1; $i <= 5; $i++)
+<label for="rank-{{ $i }}" class="star {{ $project_progress && $i <= ($project_progress['required_rank'] ?? 0) ? 'text-warning' : 'text-muted' }}">★</label>
+@endfor --}}
+
+
+{{-- <span>Deadline: {{ $project_progress ? \Carbon\Carbon::parse($project_progress['deadline'])->format('m/d') : '-' }}</span> --}}
+
+
+{{-- @php
+$projects_progress = array_pad($projects_progress, 6, null);
+@endphp --}}
+{{-- array_pad(配列, 目標の長さ, 埋める値) --}}
+{{-- $projects_progress = [1, 2, 3];
+
+$projects_progress = array_pad($projects_progress, 6, null);
+実行後の $projects_progress
+
+php
+Copy
+Edit
+[1, 2, 3, null, null, null] --}}

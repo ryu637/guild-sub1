@@ -13,7 +13,7 @@
 @section('content')
 <div class="row justify-content-center">
     <div class="col-6">
-        <a href="{{route('freelancer.profile.show', Auth::user()->id)}}" class="btn btn-secondary">≪ Back</a>
+        <a href="{{url()->previous()}}" class="fs-2  back-link"><i class="fa-solid fa-hand-point-left me-2"></i>Go Back</a>
 
         <div class="border border-black rounded shadow py-5 px-5 my-3">
             {{-- 成功メッセージ表示 --}}

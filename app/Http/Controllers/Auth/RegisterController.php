@@ -124,7 +124,7 @@ class RegisterController extends Controller
                 'X' => null,
                 'instagram' => null,
                 'facebook' =>  null,
-                'total_earnings' => 0,
+                'total_earnings' => 0
             ]);
 
 

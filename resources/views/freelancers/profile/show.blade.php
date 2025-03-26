@@ -18,7 +18,7 @@
             @if ($user->avatar)
                 <img src="{{$user->avatar}}" alt="user id {{$user->id}}" class="profile-icon">
             @else
-                <i class="fa-solid fa-user-circle fa-8x"></i>
+                <i class="fa-solid fa-user-circle profile-icon"></i>
             @endif
             <div class="rank">
                 <span class="stars">

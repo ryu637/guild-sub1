@@ -15,15 +15,19 @@ class CompanyController extends Controller
         $this->company = $company_model;
     }
 
-    public function getAllCompanies(){
-        $all_companies = $this->company
-        ->with(['user' => function ($query){
-            $query->withTrashed();
-        }])
-        ->withTrashed()->orderBy('id', 'asc')->paginate(4);
+    public function getAllCompanies(Request $request)
+    {
+        $query = Company::with(['user'])->withTrashed();
 
-        return view('admins.company')
-                ->with('all_companies', $all_companies);
+        if ($request->filled('company_name')) {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('username', 'LIKE', '%' . $request->company_name . '%');
+            });
+        }
+
+        $all_companies = $query->orderBy('id', 'asc')->paginate(4);
+
+        return view('admins.company', compact('all_companies'));
     }
 
     public function showCompany($id){

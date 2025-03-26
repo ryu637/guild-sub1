@@ -6,52 +6,47 @@
     font-size: 6rem;
 }
 
-
-
 body {
     overflow-x: hidden;
 }
 
-
-
-
 .profile-container {
     position: relative;
-    overflow: visible; /* Ensure content inside can overflow */
+    overflow: visible;
     top: 30px;
-    left:-60px;
+    left: -60px;
 }
 
 .line-1 {
     position: absolute;
-    overflow: visible; /* Allow the child to show its overflow */
+    overflow: visible;
     width: 350px;
     height: 20px;
     top: 100px;
     left: -150px;
-    z-index: 10; /* Ensure it appears above overlapping elements */
+    z-index: 10;
 }
 
 .line-2 {
     position: absolute;
-    overflow: visible; /* Allow the child to show its overflow */
+    overflow: visible;
     width: 550px;
     top: 150px;
     left: -50px;
-    z-index: 10; /* Ensure it appears above overlapping elements */
+    z-index: 10;
 }
 
 .line-3 {
     position: absolute;
-    overflow: visible; /* Allow the child to show its overflow */
+    overflow: visible;
     width: 230px;
     height: 20px;
     top: 300px;
     left: -150px;
-    z-index: 10; /* Ensure it appears above overlapping elements */
+    z-index: 10;
 }
 
-.line-4{
+.line-4 {
     position: absolute;
     width: 1800px;
     height: 30px;
@@ -61,27 +56,28 @@ body {
 
 .line-5 {
     position: absolute;
-    overflow: visible; /* Allow the child to show its overflow */
+    overflow: visible;
     width: 550px;
     top: 170px;
     left: -50px;
-    z-index: 10; /* Ensure it appears above overlapping elements */
+    z-index: 10;
 }
 
-.project-container{
+.project-container {
     border: 1px solid black;
-    margin-top: 180px!important;
+    margin-top: 100px !important;
     width: 80%;
     margin: auto;
     padding: 0 15px 15px 15px;
     background-color: lightgrey;
+    border-radius: 20px;
 }
 
-.project-container input{
+.project-container input {
     display: none;
 }
 
-.tab-menu{
+.tab-menu {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -96,19 +92,19 @@ body {
     border-bottom: 1px solid purple;
 }
 
-.tab-label{
+.tab-label {
     padding: 10px 100px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.tab-pane{
+.tab-pane {
     display: none;
 }
 
 #project-history:checked ~ .tab-content .project-history,
-#payment-history:checked ~ .tab-content .payment-history{
+#payment-history:checked ~ .tab-content .payment-history {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -117,21 +113,60 @@ body {
     overflow-y: auto;
 }
 
-.project-history-contents{
-    /* border: 1px solid black; */
-    border-radius: 10px;
+.project-history-contents {
+    border: 1px solid black;
+    border-radius: 20px;
     padding: 10px;
     display: flex;
     background-color: white;
-
 }
 
-.project-date{
+.project-date {
     background: gray;
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
+    color: #fff;
+    width: 90px;
+    height: 90px;
+    margin-left: 5px;
+    margin-right: 15px;
+    margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card-title-floating {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgba(66, 66, 66, 0.95);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.profile-1-container {
+    position: relative;
+}
+
+.card {
+    background-color: #F4EEE0 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid rgba(66, 66, 66, 0.9);
+    border-radius: 20px !important;
+    padding: 20px;
+}
+
+.edit-icon-outside {
+    position: absolute;
+    top: 0;
+    right: -40px;
+    font-size: 2rem;
+    color: #000;
+    transition: color 0.3s, transform 0.2s;
+}
+
+.edit-icon-outside:hover {
+    color: purple;
+    transform: scale(1.2);
 }

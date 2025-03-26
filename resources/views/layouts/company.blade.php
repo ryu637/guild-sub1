@@ -80,39 +80,39 @@
                         <!-- Authentication Links -->
                         <li><a href="{{ route('company.contact.with_freelancer', Auth::user()->id)}}" class="text-decoration-none text-white"><i class="fa-regular fa-envelope icon-md"></i></a></li>
                         @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('login'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @endif
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
+                            @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <!-- Profile Link -->
-                                <a class="dropdown-item" href="{{ route('company.profile.profile', Auth::user()->id) }}">
-                                    {{ __('Profile') }}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
                                 </a>
 
-                                <!-- Contact Link -->
-                                <a class="dropdown-item" href="{{ route('company.contact.contact', Auth::user()->id) }}">
-                                    {{ __('Contact') }}
-                                </a>
-                                <hr>
-                                <!-- Log Out -->
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <!-- Profile Link -->
+                                    <a class="dropdown-item" href="{{ route('company.profile.profile', Auth::user()->id) }}">
+                                        {{ __('Profile') }}
+                                    </a>
+
+                                    <!-- Contact Link -->
+                                    <a class="dropdown-item" href="{{ route('company.contact.contact', Auth::user()->id) }}">
+                                        {{ __('Contact') }}
+                                    </a>
+                                    <hr>
+                                    <!-- Log Out -->
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

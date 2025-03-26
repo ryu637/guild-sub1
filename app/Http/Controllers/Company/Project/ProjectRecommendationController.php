@@ -24,7 +24,7 @@ class ProjectRecommendationController extends Controller
     // プロジェクトのスキルと一致するフリーランサーを取得
     $freelancers = Freelancer::whereHas('skills', function ($query) use ($skillIds, $rank) {
         $query->whereIn('skills.id', $skillIds)
-              ->orWhere('rank', '<', $rank); // orWhere は `skills` テーブルの rank に適用
+              ->Where('rank', '<', $rank); // orWhere は `skills` テーブルの rank に適用
     })->get();
 
 

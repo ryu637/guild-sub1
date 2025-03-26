@@ -13,15 +13,18 @@ use App\Models\Admin;
 
 class TransactionController extends Controller
 {   
-    public function getAllTransactions(){
+    public function getAllTransactions(Request $request){
         $adminId = User::where('role_id', 1)->value('id');
 
         // Adminデータ取得
         $admin = Admin::where('user_id', $adminId)->first();
     
+        // 検索条件を取得
+        $companyName = $request->input('company_name');
+        $freelancerName = $request->input('freelancer_name');
 
         // 関連するプロジェクトと取引情報を取得
-        $projects = Project::withTrashed()
+        $projectsQuery = Project::withTrashed()
             ->with([
                 'company.user',
                 // 'application.freelancer.user',
@@ -31,8 +34,27 @@ class TransactionController extends Controller
                 }
             ])
         ->has('transactions')
-        ->orderBy('id', 'asc')
-        ->paginate(4);
+        ->orderBy('id', 'asc');
+       
+
+        // company_name でフィルタ
+        if ($companyName) {
+            $projectsQuery->whereHas('company.user', function ($query) use ($companyName) {
+                $query->where('username', 'like', '%' . $companyName . '%');
+            });
+        }
+
+        // freelancer_name でフィルタ
+        if ($freelancerName) {
+            $projectsQuery->whereHas('transactions.payee', function ($query) use ($freelancerName) {
+                $query->where('username', 'like', '%' . $freelancerName . '%')
+                      ->where('role_id', 3); // フリーランサーのみ
+            });
+        }
+
+        // ページネーション
+        $projects = $projectsQuery->paginate(4);
+
 
         // 各プロジェクトに紐づく取引から role_id=3 の payee を取得
         foreach ($projects as $project) {

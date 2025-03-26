@@ -25,37 +25,40 @@
 
 <div class="profile-container row justify-content-center">
     <div class="profile-container-1 col-11">
-        <div class="w-50 profile-1 card rounded mt-5 ps-3 py-3 me-3 float-end">
-            <div class="header mb-3 fw-bold fs-4">Company profile</div>
-                <table class="company-profile">
-                    <tbody>
-                        <tr>
-                            <td>Company name:</td>
-                            <td>{{ $user->username }}</td>
-                        </tr>
-                        <tr>
-                            <td>Email:</td>
-                            <td>{{ $user->email }}</td>
-                        </tr>
-                        <tr>
-                            <td>Website:</td>
-                            @if ($user->company)
-                                <td>{{ $user->company->website }}</td>
-                            @endif
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="w-50 profile-1-container mt-5 float-end position-relative">
+            <h2 class="card-title-floating">Company Profile</h2>
+            <div class="position-relative">
+                @if (Auth::check() && Auth::id() === $user->id)
+                    <a href="{{ route('company.profile.for_update', $user->id) }}" class="edit-icon-outside">
+                        <i class="fa-solid fa-pen-to-square icon-sm text-black"></i>
+                    </a>
+                @endif
+                <div class="card rounded mt-5 ps-3 py-3 me-4">
+                    <table class="company-profile">
+                        <tbody>
+                            <tr>
+                                <td>Company name:</td>
+                                <td>{{ $user->username }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email:</td>
+                                <td>{{ $user->email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Website:</td>
+                                @if ($user->company)
+                                    <td>{{ $user->company->website }}</td>
+                                @endif
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        @if (Auth::check() && Auth::id() === $user->id)
-        <div class="col-1 mt-5 float-end"><a href="{{ route('company.profile.for_update', $user->id) }}">
-            <i class="fa-solid fa-pen-to-square icon-sm text-black"></i></a>
-        </div>
-        @endif
-    </div>
+    </div>    
 
     <div class="profile-container-2 row justify-content-center">
-            <div class="col-10 float-start mx-5 mt-5">
+            <div class="col-10 float-start mx-5 mt-3">
                 <div class="card rounded w-75 m-5 p-3">
                         <table class="profile-2">
                             <tbody>
@@ -103,7 +106,7 @@
     </div>
 
     <div class="container">
-        <div class="card-body">
+        <div class="card-body border">
             <!-- Contents of Tab -->
             <div class="project-container">
                 <input type="radio" id="project-history" name="tab-group" checked>

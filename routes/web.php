@@ -49,4 +49,14 @@ Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function ()
 
     // transaction
     Route::get('transaction', [App\Http\Controllers\Admin\TransactionController::class, 'getAllTransactions'])->name('transaction');
+
+    // statistics
+    Route::get('/statistics', [App\Http\Controllers\Admin\StatisticsController::class, 'index'])->name('statistics');
+    Route::get('/statistics/data', [App\Http\Controllers\Admin\StatisticsController::class, 'getStatisticsData'])->name('statistics.data');
+    Route::get('/statistics/skills', [App\Http\Controllers\Admin\StatisticsController::class, 'getProjectSkillStatistics'])->name('statistics.skills');
+    Route::get('/statistics/freelancer-skills', [App\Http\Controllers\Admin\StatisticsController::class, 'getFreelancerSkillStatistics'])->name('statistics.freelancer_skills');
+    Route::get('/statistics/project-skill-top10', [App\Http\Controllers\Admin\StatisticsController::class, 'getProjectSkillTop10'])->name('statistics.project_skill_top10');
+    Route::get('/statistics/freelancer-skill-top10', [App\Http\Controllers\Admin\StatisticsController::class, 'getFreelancerSkillTop10'])->name('statistics.freelancer_skill_top10');
+    Route::get('/statistics/project_ranks', [App\Http\Controllers\Admin\StatisticsController::class, 'projectRanks'])->name('statistics.project_ranks');
+    Route::get('/statistics/freelancer_ranks', [App\Http\Controllers\Admin\StatisticsController::class, 'freelancerRanks'])->name('statistics.freelancer_ranks');
 });
