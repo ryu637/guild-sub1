@@ -94,7 +94,6 @@ class RegisterController extends Controller
                 'user_id' => $user->id,
                 'address' => null,
                 'website' => null,
-                'paypal_account' => null,
                 'total_spent' => 0.00,
                 'representative'       => null,
                 'employee'       => null,

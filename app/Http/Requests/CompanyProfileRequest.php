@@ -26,7 +26,6 @@ class CompanyProfileRequest extends FormRequest
             'email'             => 'required|email|max:255|unique:users,email,' . $this->user()->id,
             'address'           => 'nullable|string|max:255',
             'website'           => 'nullable|string|max:255',
-            'paypal_account'    => 'nullable|string|max:255',
             'representative'    => 'nullable|string|max:255',
             'employee'          => 'nullable|integer',
             'capital'           => 'nullable|numeric',

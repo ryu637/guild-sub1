@@ -13,7 +13,6 @@ class Company extends Model
         'user_id',
         'address',
         'website',
-        'paypal_account',
         'total_spent',
         'representative',
         'employee',
