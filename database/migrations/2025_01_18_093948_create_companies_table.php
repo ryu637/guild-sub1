@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('address')->nullable();
             $table->string('website')->nullable();
-            $table->string('paypal_account')->unique()->nullable();
             $table->decimal('total_spent', 10, 2)->default(0.00); // Total amount spent
             $table->string('representative')->nullable();
             $table->integer('employee')->nullable();

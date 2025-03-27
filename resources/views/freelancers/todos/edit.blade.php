@@ -27,7 +27,7 @@
                     <h3 class="mb-4 fw-bold">Edit To Do</h3>
                     <button type="button" id="add-todo" class="btn btn-secondary mb-3">Add</button>
                     <input type="hidden" name="deleted_todos" id="deleted_todos">
-                    <div id="todo-list" style="height: 30vh; overflow-y: auto;">
+                    <div id="todo-list" style="height: 55vh; overflow-y: auto;">
                         @foreach ($all_todos as $todo)
                         <div class="todo-item">
                             <label for="todo" class="form-label">To Do {{$loop->index + 1}}</label>
