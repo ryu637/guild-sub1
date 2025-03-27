@@ -106,7 +106,7 @@
     </div>
 
     <div class="container">
-        <div class="card-body border">
+        <div class="card-body">
             <!-- Contents of Tab -->
             <div class="project-container">
                 <input type="radio" id="project-history" name="tab-group" checked>
@@ -144,7 +144,7 @@
 
                     <!-- Payment History -->
                     <div class="tab-pane payment-history">
-                        <table class="table table-bordered w-75">
+                        <table class="table table-bordered" style="width: 85%;">
                             <thead>
                                 <tr>
                                     <th>DATE</th>
@@ -157,7 +157,7 @@
                                 <tr>
                                     <td>{{ $transaction->created_at->format('d M Y') }}</td>
                                     <td>{{ $transaction->project->title }}</td>
-                                    <td>{{ $transaction->amount }}</td>
+                                    <td>{{ ($transaction->amount ?? 0) + ($transaction->fee ?? 0) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

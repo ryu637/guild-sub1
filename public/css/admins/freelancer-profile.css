@@ -23,6 +23,7 @@ main{
 .profile-icon {
     width: 150px;
     height: 150px;
+    font-size: 150px!important;
     border-radius: 50%;
 }
 

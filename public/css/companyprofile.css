@@ -64,7 +64,7 @@ body {
 }
 
 .project-container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-top: 100px !important;
     width: 80%;
     margin: auto;
@@ -118,7 +118,7 @@ body {
     border-radius: 20px;
     padding: 10px;
     display: flex;
-    background-color: white;
+    background-color: #F4EEE0; /* ←ここをページ背景と同じ色に */
 }
 
 .project-date {
@@ -145,9 +145,9 @@ body {
     z-index: 20;
 }
 
-.profile-1-container {
+/* .profile-1-container {
     position: relative;
-}
+} */
 
 .card {
     background-color: #F4EEE0 !important;
@@ -169,4 +169,28 @@ body {
 .edit-icon-outside:hover {
     color: purple;
     transform: scale(1.2);
+}
+
+.card-body.border {
+    border: none !important;
+}
+
+.project-container {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.payment-history table {
+    border-radius: 20px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #F4EEE0; /* ←ここも同様に */
+    border: 1px solid rgba(66, 66, 66, 0.9); /* ← 外枠のボーダーを追加 */
+}
+
+.payment-history table th,
+.payment-history table td {
+    border: 1px solid #dee2e6;
+    background-color: #F4EEE0; /* ←ここも同様に */
 }
